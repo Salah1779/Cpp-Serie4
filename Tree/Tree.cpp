@@ -17,13 +17,20 @@ int main()
 	Tree.addElement(3, nullptr);
 
 
-
+	std::cout<<"BFS traversal of tree: "<<std::endl;
 	Tree.BFSdisplay();
 	std::cout << std::endl;
 	
-
+	std::cout << "In-order traversal of BStree: " << std::endl;
 	Tree.display(Tree.getRoot());
 	std::cout << std::endl;
+
+int se=3;
+std::cout << "Searching for " << se << " ..." << std::endl;
+	if(Tree.searchElement(3, Tree.getRoot()))
+		std::cout << se << " Found" << std::endl;
+	else
+		std::cout << se << " Not Found" << std::endl;
 
 	std::cout << "----------------------------------------" << std::endl;
 
@@ -31,12 +38,21 @@ int main()
 	AVLTree<int> Tree2(4);
 	Tree2.addElement(2);
 	Tree2.addElement(3);
+	Tree2.addElement(1);
+	Tree2.addElement(5);
+	Tree2.addElement(6);
+	Tree2.addElement(7);
 
-	std::cout <<"\ntest" << std::endl;
-	
-
+	std::cout << "BFS traversal of AVLtree: " << std::endl;
 	Tree2.BFSdisplay();
 	std::cout << std::endl;
+
+	se = 10;
+	std::cout << "Searching for " << se << " ..." << std::endl;
+	if (Tree2.searchElement(se, Tree2.getRoot()))
+		std::cout << se << " Found" << std::endl;
+	else
+		std::cout << se << " Not Found" << std::endl;
 
 
 
