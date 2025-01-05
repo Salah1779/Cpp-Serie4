@@ -76,29 +76,46 @@ void BST<MyType>::display(const Node<MyType>* node) const
     display(node->getRight());
 }
 
+//Method to traverse the tree in breadth
 template<class MyType>
 void BST<MyType>::BFSdisplay() const
 {
-    if (isEmpty()) {
+    // Check if the tree is empty
+    if (isEmpty()) { 
         std::cout << "Tree is empty." << std::endl;
-        return;
+        return; // Exit if the tree has no nodes.
     }
 
-    std::queue<Node<MyType>*> nodeQueue;
-    nodeQueue.push(root);
+    // Create a queue to hold nodes to process
+    std::queue<Node<MyType>*> nodeQueue; // A queue is used for Breadth-First Search (BFS) traversal.
+    
+    // Start with the root node
+    nodeQueue.push(root); // **Visited:** Root node is added to the queue. 
 
-    while (!nodeQueue.empty()) {
-        Node<MyType>* currentNode = nodeQueue.front();
-        nodeQueue.pop();
+    // Continue until all nodes are processed
+    while (!nodeQueue.empty()) { // Checking if there are still nodes to process.
+        // Get the current node at the front of the queue
+        Node<MyType>* currentNode = nodeQueue.front(); // **Processing:** The current node is taken for processing.
+        nodeQueue.pop(); // Remove the current node from the queue.
 
+        // Display the value of the current node
         std::cout << currentNode->getVal() << " ";
 
-        if (currentNode->getLeft() != nullptr)
-            nodeQueue.push(currentNode->getLeft());
-        if (currentNode->getRight() != nullptr)
-            nodeQueue.push(currentNode->getRight());
+        // Check and enqueue the left child if it exists
+        if (currentNode->getLeft() != nullptr) { 
+            nodeQueue.push(currentNode->getLeft()); // **Visited:** Left child node is added to the queue for future processing. 
+        }
+
+        // Check and enqueue the right child if it exists
+        if (currentNode->getRight() != nullptr) { 
+            nodeQueue.push(currentNode->getRight()); // **Visited:** Right child is added to the queue for future processing.
+        }
+
+         // **Processed:** the current node is processed.
     }
-    std::cout << std::endl;
+
+    
+    std::cout << std::endl; // **Processed:** All nodes have been processed and displayed.
 }
 
 template<class MyType>
